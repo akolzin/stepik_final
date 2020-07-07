@@ -12,3 +12,11 @@ class LoginPageLocators():
     REGISTER_PASS = (By.CSS_SELECTOR,"#id_registration-password1")
     CONFIRM_REGISTER_PASS = (By.CSS_SELECTOR,"#id_registration-password2")
     REGISTER_BUTTON = (By.CSS_SELECTOR,"button[name='registration_submit']")
+
+class ProductPageLocators():
+    CLICK_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
+    PRODUCT_NAME = (By.CSS_SELECTOR, ".col-sm-6.product_main  h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main .price_color")
+    PRODUCT_NAME_IN_BASKET = (By.CSS_SELECTOR, "#messages  div:nth-child(1)  strong")
+    PRODUCT_PRICE_IN_BASKET = (By.CSS_SELECTOR, "#messages  div:nth-child(3)   strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages>div:nth-child(1)")
