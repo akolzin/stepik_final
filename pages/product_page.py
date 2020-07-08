@@ -20,10 +20,10 @@ class ProductPage(BasePage):
         product_price_in_basket = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_BASKET).text
         assert product_price_in_basket == product_price_on_page, "Name is not same"
 
-    # def should_not_be_success_message(self):
-    #     assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
-    #         "Success message is presented, but should not be"
-    #
-    # def should_dissapear_of_success_message(self):
-    #     assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
-    #         "Success message is dissapeared, but should not be"
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_dissapear_of_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is dissapeared, but should not be"
