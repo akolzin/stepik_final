@@ -1,10 +1,10 @@
 import pytest
 import time
 import random
-# from .pages.basket_page import BasketPage  # если не запускается добавить точку перед "pages.basket_page import BasketPage"  (разница пакетов)
-# from .pages.login_page import LoginPage  # если не запускается добавить точку перед "pages.login_page import LoginPage"  (разница пакетов)
+from .pages.basket_page import BasketPage  # если не запускается добавить точку перед "pages.basket_page import BasketPage"  (разница пакетов)
+from .pages.login_page import LoginPage  # если не запускается добавить точку перед "pages.login_page import LoginPage"  (разница пакетов)
 from .pages.product_page import ProductPage  # если не запускается добавить точку перед "pages.product_page import ProductPage"  (разница пакетов)
-# from .pages.main_page import MainPage
+from .pages.main_page import MainPage
 
 
 # @pytest.mark.need_review
@@ -53,30 +53,40 @@ from .pages.product_page import ProductPage  # если не запускает�
 #     product_page.find_product_name()
 #     product_page.find_product_price()
 
-@pytest.mark.xfail(reason='wrong message')
-def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-    product_page = ProductPage(browser, link)
-    product_page.open()
-    product_page.add_product_to_basket()
-    product_page.should_not_be_success_message()
-
-def test_guest_cant_see_success_message(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-    product_page = ProductPage(browser, link)
-    product_page.open()
-    product_page.should_not_be_success_message()
-
-@pytest.mark.xfail(reason='dont dissapeared')
-def test_message_disappeared_after_adding_product_to_basket(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-    product_page = ProductPage(browser, link)
-    product_page.open()
-    product_page.add_product_to_basket()
-    product_page.should_dissapear_of_success_message()
+# @pytest.mark.xfail(reason='wrong message')
+# def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+#     product_page = ProductPage(browser, link)
+#     product_page.open()
+#     product_page.add_product_to_basket()
+#     product_page.should_not_be_success_message()
+#
+# def test_guest_cant_see_success_message(browser):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+#     product_page = ProductPage(browser, link)
+#     product_page.open()
+#     product_page.should_not_be_success_message()
+#
+# @pytest.mark.xfail(reason='dont dissapeared')
+# def test_message_disappeared_after_adding_product_to_basket(browser):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+#     product_page = ProductPage(browser, link)
+#     product_page.open()
+#     product_page.add_product_to_basket()
+#     product_page.should_dissapear_of_success_message()
 
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
     page.open()
     page.should_be_login_link()
+
+@pytest.mark.need_review
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.go_to_basket_page()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_basket_empty_message()
+    basket_page.is_basket_empty()
