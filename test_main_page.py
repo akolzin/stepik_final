@@ -32,6 +32,7 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     basket_page.should_be_basket_empty_message()
     basket_page.is_basket_empty()
 
+
 @pytest.mark.login_guest
 class TestLoginFromMainPage():
     # не забываем передать первым аргументом self
