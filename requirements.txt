@@ -55,7 +55,7 @@ selenium-chrome-screenshot==0.0.1
 shellingham==1.3.2
 six==1.12.0
 typeguard==2.7.1
-urllib3==1.25.8
+urllib3==1.26.5
 Wand==0.5.9
 wcwidth==0.1.8
 Werkzeug==1.0.0
